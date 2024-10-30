@@ -19,12 +19,14 @@
 
   </head>
 
-  <body>
-    <%= render "shared/navbar" %>
+<body>
+  <%= render "shared/navbar" %>
+  <div class="container mt-4">
+    <% if user_signed_in? %>
+      <h2>Hi <%= current_user.email %></h2>
+    <% end %>
     <%= render "shared/flashes" %>
     <%= yield %>
-    <% if user_signed_in? %>
-    <h2>Hi <%= current_user.email%></h2>
-    <% end %>
-  </body>
+  </div>
+</body>
 </html>
