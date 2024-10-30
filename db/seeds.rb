@@ -7,3 +7,42 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+user1 = User.create(
+  #name: 'petlover1',
+  email: 'petlover1@example.com',
+  password: 'password123'
+)
+
+user2 = User.create(
+  #name: 'catmom23',
+  email: 'catmom23@example.com',
+  password: 'password123'
+)
+
+
+pet1 = Pet.create(
+  name: 'Ronald',
+  breed: 'Golden Retriever',
+  age: 3,
+  address:
+  description:
+  user: user1
+)
+
+pet2 = Pet.create(
+  name: 'Fendi',
+  breed: 'Siamese Cat',
+  age: 2,
+  address:
+  description:
+  user: user2
+)
+
+pet3 = Pet.create(
+  name: 'Max',
+  breed: 'Pitbull',
+  age: 5,
+  address:
+  description:
+  user: user1
+)
