@@ -1,5 +1,0 @@
-{
-  "dependencies": {
-    "@hotwired/turbo-rails": "^8.0.12"
-  }
-}
