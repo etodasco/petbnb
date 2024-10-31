@@ -1,1 +1,29 @@
 <h1>Popular Pets</h1>
+
+<h1>Popular Pets</h1>
+
+<div>
+  <form action="/pets" method="get">
+    <input type="text" name="search" placeholder="Search for a pet..." />
+    <button type="submit">Search</button>
+  </form>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @popular_pets.each do |pet| %>
+      <tr>
+        <td><%= pet.name %></td>
+        <td><%= pet.description %></td>
+        <td><%= pet.address %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
