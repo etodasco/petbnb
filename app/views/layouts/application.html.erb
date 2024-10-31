@@ -20,13 +20,22 @@
   </head>
 
 <body>
+
   <%= render "shared/navbar" %>
   <div class="container mt-4">
     <% if user_signed_in? %>
       <h6 class="text-end">Signed in as: <%= current_user.email %></h6>
+  <div class="input-group mt-3 mb-3">
+    <input type="text" class="form-control" placeholder="Search for a pet" aria-label="Recipient's username" aria-describedby="basic-addon2">
+    <div class="input-group-append">
+      <span class="input-group-text" id="basic-addon2">Search</span>
+    </div>
+  </div>
     <% end %>
     <%= render "shared/flashes" %>
     <%= yield %>
   </div>
+
+
 </body>
 </html>
