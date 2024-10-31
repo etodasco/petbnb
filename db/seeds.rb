@@ -1,49 +1,52 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-user1 = User.create(
-  #name: 'petlover1',
-  email: 'petlover1@example.com',
-  password: 'password123'
+require 'faker'
 
-)
+# Create users
+users = []
+5.times do
+  users << User.create(
+    email: Faker::Internet.unique.email,
+    password: "password",  # Replace with a secure password in production
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name
+  )
+end
 
-user2 = User.create(
-  #name: 'catmom23',
-  email: 'catmom23@example.com',
-  password: 'password123'
-)
+# Array of unique dog images
+dog_images = [
+  "https://placedog.net/300/200?random=1",
+  "https://placedog.net/300/200?random=2",
+  "https://placedog.net/300/200?random=3",
+  "https://placedog.net/300/200?random=4",
+  "https://placedog.net/300/200?random=5",
+  "https://placedog.net/300/200?random=6",
+  "https://placedog.net/300/200?random=7",
+  "https://placedog.net/300/200?random=8",
+  "https://placedog.net/300/200?random=9",
+  "https://placedog.net/300/200?random=10"
+]
 
+# Create 10 pets associated with the users
+10.times do
+  user = users.sample  # Randomly select a user for each pet
+  Pet.create(
+    name: Faker::Creature::Dog.name,
+    breed: Faker::Creature::Dog.breed,
+    address: Faker::Address.full_address,
+    description: Faker::Lorem.sentence,
+    image_url: dog_images.sample,  # Select a random dog image
+    user_id: user.id
+  )
+end
 
-pet1 = Pet.create(
-  name: 'Ronald',
-  breed: 'Golden Retriever',
-  age: 3,
-  address:1855 Griffin Rd, Dania Beach, FL 33004, USA
-  description: 'Meet Ronald, a spirited 3-year-old Golden Retriever with a heart of gold.'
-  user: user1
-)
+# Create reservations for the pets
+Pet.all.each do |pet|
+  Reservation.create(
+    user_id: users.sample.id,  # Randomly assign a user to the reservation
+    pets_id: pet.id,
+    start_date: Faker::Date.forward(days: 23),
+    end_date: Faker::Date.forward(days: 30),
+    status: ["pending", "confirmed", "cancelled"].sample
+  )
+end
 
-pet2 = Pet.create(
-  name: 'Fendi',
-  breed: 'Siamese Cat',
-  age: 2,
-  address: 3450 W. 3rd St, Los Angeles, CA 90020, USA
-  description:'Fendi is a playful and curious 2-year-old Siamese cat with striking blue eyes.'
-  user: user2
-)
-
-pet3 = Pet.create(
-  name: 'Max',
-  breed: 'Pitbull',
-  age: 5,
-  address: 2500 E. Sunrise Blvd, Fort Lauderdale, FL 33304, USA
-  description:'Max is a gentle and loving 5-year-old Pitbull with a big heart.'
-  user: user1
-)
+puts "Seeded #{User.count} users, #{Pet.count} pets, and #{Reservation.count} reservations."
