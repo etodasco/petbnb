@@ -1,0 +1,20 @@
+<h1>Find a pet</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pets.each do |pet| %>
+      <tr>
+        <td><%= pet.name %></td>
+        <td><%= pet.description %></td>
+        <td><%= pet.address%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
