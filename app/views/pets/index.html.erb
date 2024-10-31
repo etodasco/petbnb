@@ -2,22 +2,30 @@
   <h1>Welcome to Petbnb</h1>
 </div>
 
-<div class="d-flex justify-content-center mt-5">
-    <img src="https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1024-512,f_auto,q_auto:best/rockcms/2022-08/220805-border-collie-play-mn-1100-82d2f1.jpg" class="img-fluid mb-5" alt="Border Collie">
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-12 text-center">
+      <img src="https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1024-512,f_auto,q_auto:best/rockcms/2022-08/220805-border-collie-play-mn-1100-82d2f1.jpg" class="img-fluid w-50 mb-5" alt="Border Collie">
+    </div>
+  </div>
 </div>
 
+<h1 class="text-center mt-5">Available Pets</h1>
 
-<%# Img cards for all pets %>
-<div class="container">
+<div class="container mt-4">
   <div class="row">
     <% @pets.each do |pet| %>
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <img src="<%= pet.image_url %>" class="card-img-top" alt="<%= pet.name %>">
+      <div class="col-md-4 mb-4"> <!-- Adjust column size as needed -->
+        <div class="card h-100"> <!-- Ensure cards are of equal height -->
+          <img src="<%= pet.image_url || 'https://place.dog/300/200' %>" class="card-img-top" alt="<%= pet.name %>">
           <div class="card-body">
             <h5 class="card-title"><%= pet.name %></h5>
-            <p class="card-text"><%= pet.breed %></p>
-            <p class="card-text"><%= pet.description %></p>
+            <p class="card-text">Breed: <%= pet.breed %></p>
+            <p class="card-text">Description: <%= pet.description %></p>
+            <p class="card-text"><small class="text-muted">Location: <%= pet.address %></small></p>
+          </div>
+          <div class="card-footer text-center">
+            <a href="#" class="btn btn-primary">View Details</a> <!-- Button to view more details -->
           </div>
         </div>
       </div>
