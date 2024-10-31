@@ -1,0 +1,37 @@
+<div class="container">
+
+<%# <div class="container mt-5 text-center">
+  <h1>Welcome to Petbnb</h1>
+</div> %>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-12 text-center">
+      <img src="https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1024-512,f_auto,q_auto:best/rockcms/2022-08/220805-border-collie-play-mn-1100-82d2f1.jpg" class="img-fluid w-50 mb-5" alt="Border Collie">
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <h2>Log In</h2>
+</div>
+
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :email,
+                  required: false,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" } %>
+      <%= f.input :password,
+                  required: false,
+                  input_html: { autocomplete: "current-password" } %>
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    </div>
+
+    <div class="form-actions btn btn-primary">
+      <%= f.button :submit, "Log in" %>
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</div>
