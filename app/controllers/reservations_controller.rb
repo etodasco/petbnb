@@ -1,5 +1,4 @@
 class ReservationsController < ApplicationController
-  class ReservationsController < ApplicationController
     def new
       @pet = Pet.find(params[:pet_id])
       @reservation = Reservation.new
@@ -21,5 +20,4 @@ class ReservationsController < ApplicationController
     def reservation_params
       params.require(:reservation).permit(:start_date, :end_date, :status)
     end
-  end
 end
