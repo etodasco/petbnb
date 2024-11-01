@@ -1,0 +1,16 @@
+<h3>Reviews</h3>
+<ul>
+  <% @animal.reviews.each do |review| %>
+    <li>
+      <strong>Rating:</strong> <%= review.rating %>/5<br>
+      <strong>Comment:</strong> <%= review.comment %><br>
+      <strong>By:</strong> <%= review.user.name %>
+      <% if review.user == current_user %>
+        <%= link_to 'Delete', animal_review_path(@animal, review), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+
+<%= link_to 'Add Review', new_animal_review_path(@animal) %>
