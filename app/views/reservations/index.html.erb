@@ -1,0 +1,16 @@
+<h1>Reservations</h1>
+
+<div class="container mt-4">
+  <div class="row">
+    <% @reservations.each do |reservation| %>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title     ">Pet: <%= reservation.pet.name %></h5>
+            <p class="card-text">Owner: <%= reservation.pet.user.email %></p>
+            <p class="card-text">Start Date: <%= reservation.start_date %></p>
+            <p class="card-text">End Date: <%= reservation.end_date %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
