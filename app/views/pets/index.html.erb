@@ -1,3 +1,10 @@
+  <div class="input-group mt-3 mb-3">
+    <input type="text" class="form-control" placeholder="Search available pets" aria-label="Recipient's username" aria-describedby="basic-addon2">
+    <div class="input-group-append">
+      <span class="input-group-text" id="basic-addon2">Search</span>
+    </div>
+  </div>
+
 <h1 class="text-left mt-5">Available Pets 🦮</h1>
 
 <div class="container mt-4">
@@ -13,7 +20,7 @@
             <p class="card-text"><small class="text-muted">Location: <%= pet.address %></small></p>
           </div>
           <div class="card-footer text-center">
-            <%= link_to "View Details", "#", class: "btn btn-primary" %>
+            <%= link_to "View #{pet.name}'s Details", pet_path(pet), class: "btn btn-primary" %>
             <%# <a href="#" class="btn btn-primary">View Details</a> %>
           </div>
         </div>
