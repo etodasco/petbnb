@@ -14,3 +14,57 @@
 .form-group {
   margin-bottom: 15px;
 }
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+}
+
+.destination-input {
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  flex: 1;
+  border-radius: 30px 0 0 30px;
+}
+
+.date-input {
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  width: 120px;
+}
+
+.date-input:focus {
+  outline: none;
+  border: 1px solid #ff385c;
+}
+
+.destination-input:focus {
+  outline: none;
+  border: 1px solid #ff385c;
+}
+
+.search-button {
+  background-color: #ff385c;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 0 30px 30px 0;
+  transition: background-color 0.3s;
+}
+
+.search-button:hover {
+  background-color: #e53e50;
+}
+
+.reservations-link {
+  margin-bottom: 20px;
+  display: inline-block;
+}
