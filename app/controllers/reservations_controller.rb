@@ -17,6 +17,10 @@ class ReservationsController < ApplicationController
       end
     end
 
+    def index
+      @reservations = Reservation.all
+    end
+
     private
 
     def reservation_params
