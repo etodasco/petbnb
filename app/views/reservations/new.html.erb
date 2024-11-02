@@ -11,6 +11,8 @@
     <%= form.date_field :end_date, class: "form-control" %>
   </div>
 
-  <%= form.submit "Create Reservation", class: "btn btn-primary" %>
+  <%= form.submit "Create Reservation", class: "btn btn-primary mt-3" %>
+  <%= link_to "Cancel Request", pet_path(@pet), class: "btn btn-primary mt-3" %>
+  
 <% end %>
 
