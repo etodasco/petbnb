@@ -1,3 +1,4 @@
-import "bootstrap"
-import "@hotwired/turbo-rails"
-import "./controllers"
+import "@hotwired/turbo-rails";
+import "@popperjs/core";
+import "bootstrap";
+import "controllers";
