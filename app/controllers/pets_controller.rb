@@ -37,5 +37,5 @@ class PetsController < ApplicationController
       @pet = Pet.find(params[:id])
       @pet.destroy
       redirect_to pets_path, notice: "Pet was successfully removed."
-      end
+    end
 end
