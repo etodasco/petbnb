@@ -1,20 +1,23 @@
-<h1>Find a pet</h1>
+<h1 class="text-left mt-5">Available Pets 🦮</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Address</th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="container mt-4">
+  <div class="row">
     <% @pets.each do |pet| %>
-      <tr>
-        <td><%= pet.name %></td>
-        <td><%= pet.description %></td>
-        <td><%= pet.address%></td>
-      </tr>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <img src="<%= pet.image_url || 'https://place.dog/300/200' %>" class="card-img-top" alt="<%= pet.name %>">
+          <div class="card-body">
+            <h5 class="card-title"><%= pet.name %></h5>
+            <p class="card-text">Breed: <%= pet.breed %></p>
+            <p class="card-text">Description: <%= pet.description %></p>
+            <p class="card-text"><small class="text-muted">Location: <%= pet.address %></small></p>
+          </div>
+          <div class="card-footer text-center">
+            <%= link_to "View Details", "#", class: "btn btn-primary" %>
+            <%# <a href="#" class="btn btn-primary">View Details</a> %>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
