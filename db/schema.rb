@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_02_153436) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_31_125637) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,8 +33,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_02_153436) do
     t.date "start_date"
     t.date "end_date"
     t.bigint "user_id", null: false
-    t.bigint "pet_id", null: false
-    t.index ["pet_id"], name: "index_reservations_on_pet_id"
+    t.bigint "pets_id"
+    t.index ["pets_id"], name: "index_reservations_on_pets_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
@@ -53,6 +53,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_02_153436) do
   end
 
   add_foreign_key "pets", "users"
-  add_foreign_key "reservations", "pets"
+  add_foreign_key "reservations", "pets", column: "pets_id"
   add_foreign_key "reservations", "users"
 end
