@@ -5,8 +5,10 @@ class ReservationsController < ApplicationController
     end
     def create
       @pet = Pet.find(params[:pet_id])
-      @reservation = @pet.reservations.build(reservation_params)
-      @reservation.user = current_user  # Assumes you have a current_user method
+      @reservation = Reservation.new(reservation_params)
+      @reservation.user = current_user
+      @reservation.pet = @pet
+      @reservation.status = "pending"
 
       if @reservation.save
         redirect_to pet_path(@pet), notice: "Reservation created successfully!"
@@ -18,6 +20,6 @@ class ReservationsController < ApplicationController
     private
 
     def reservation_params
-      params.require(:reservation).permit(:start_date, :end_date, :status)
+      params.require(:reservation).permit(:start_date, :end_date)
     end
 end
