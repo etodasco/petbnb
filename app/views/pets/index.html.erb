@@ -13,11 +13,54 @@
             <p class="card-text"><small class="text-muted">Location: <%= pet.address %></small></p>
           </div>
           <div class="card-footer text-center">
-            <%= link_to "View Details", "#", class: "btn btn-primary" %>
-            <%# <a href="#" class="btn btn-primary">View Details</a> %>
+            <%= link_to "View Details", pet_path(pet), class: "btn btn-primary" %>
           </div>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+
+<h1 class="mt-5">Post Your Pet for Rent</h1>
+
+<%= form_with model: Pet.new, local: true do |form| %>
+  <% if @pet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pet.errors.count, "error") %> prohibited this pet from being saved:</h2>
+      <ul>
+        <% @pet.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :breed %>
+    <%= form.text_field :breed %>
+  </div>
+
+  <div>
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div>
+    <%= form.label :image_url %>
+    <%= form.text_field :image_url %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.submit "Create Pet Post" %>
+  </div>
+<% end %>
