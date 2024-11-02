@@ -1,7 +1,4 @@
-import "bootstrap"
-import "@hotwired/turbo-rails"
-//= require jquery
-//= require rails-ujs
-//= require_tree .
-import Rails from "@rails/ujs";
-Rails.start();
+import "@hotwired/turbo-rails";
+import "@popperjs/core";
+import "bootstrap";
+import "controllers";
