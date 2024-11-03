@@ -24,13 +24,13 @@
 
   <%= render "shared/navbar" %>
 
-  <div class="container mt-5 text-center">
-    <h1>Welcome to Petbnb 🐾</h1>
-  </div>
-
   <div class="container mt-4">
     <% if user_signed_in? %>
   <h6 class="text-end">Signed in as: <%= current_user.email %></h6>
+
+  <div class="container mt-5 text-center">
+    <h1>Welcome to Petbnb<%= image_tag "https://www.shutterstock.com/image-photo/happy-puppy-welsh-corgi-14-600nw-2270841247.jpg", width: "80", height: "80" %></h1>
+  </div>
 
   <%# <div class="input-group mt-3 mb-3">
     <input type="text" class="form-control" placeholder="Search available pets" aria-label="Recipient's username" aria-describedby="basic-addon2">
