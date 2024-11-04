@@ -1,4 +1,4 @@
-<h1>Reservations</h1>
+<h1>Reservations <%= link_to "Back to Home page", pets_path, class: "btn btn-primary float-end" %></h1>
 
 <div class="container mt-4 mb-4">
   <div class="row">
@@ -8,7 +8,7 @@
           <div class="card-body">
             <img src="<%= reservation.pet.image_url %>" class="card-img-top" alt="<%= reservation.pet.name %>">
             <div class="card-text mt-2">
-              <h5 class="card-title">Pet: <%= reservation.pet.name %></h5>
+              <h5 class="card-title">Reservation for: <%= reservation.pet.name %></h5>
               <p class="card-text">Owner: <%= reservation.pet.user.email %></p>
               <p class="card-text">Start Date: <%= reservation.start_date %></p>
               <p class="card-text">End Date: <%= reservation.end_date %></p>
@@ -20,3 +20,4 @@
     <% end %>
   </div>
 </div>
+
