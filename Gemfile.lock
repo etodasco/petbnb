@@ -361,7 +361,7 @@ DEPENDENCIES
   faker
   font-awesome-sass (~> 6.1)
   geocoder
-  importmap-rails (~> 1.2.3)
+  importmap-rails
   jbuilder
   pg (~> 1.1)
   puma (>= 5.0)

@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   root to: "pets#index"
-  resources :pets, only: [:index, :new, :create, :show, :destroy] do
-    resources :reservations, only: [:new, :create]
+  resources :pets, only: [ :index, :new, :create, :show, :destroy ] do
+    resources :reservations, only: [ :new, :create ]
   end
-  resources :reservations, only: [:index, :show]
+  resources :reservations, only: [ :index, :show ]
 end

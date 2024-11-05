@@ -27,11 +27,11 @@ class PetsController < ApplicationController
       render :new
     end
   end
-
   def destroy
+    @pet = Pet.find(params[:id])
     @pet.destroy
-    redirect_to pets_path, notice: "Pet was successfully removed."
-  end
+    redirect_to pets_path, notice: "Pet was successfully deleted."
+  end  
 
   private
 
