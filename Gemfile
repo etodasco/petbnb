@@ -38,6 +38,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 # Gemfile
+gem "geocoder"
 gem 'faker'
 gem "devise"
 gem "bootstrap", "~> 5.2"

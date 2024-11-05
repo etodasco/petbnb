@@ -6,6 +6,8 @@
 // External libraries
 @import "bootstrap";
 @import "font-awesome";
+@import url("https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css");
+@import url("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css");
 
 // Your CSS partials
 @import "components/index";
@@ -13,4 +15,85 @@
 
 .form-group {
   margin-bottom: 15px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid #1EDD88;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+}
+
+.destination-input {
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  flex: 1;
+  border-radius: 30px 0 0 30px;
+  background-color: white;
+}
+
+.date-input {
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  width: 120px;
+}
+
+.date-input:hover {
+  background-color: #1EDD88;
+}
+
+.date-input:focus {
+  outline: none;
+  border: 1px solid #20e98e;
+}
+
+.destination-input:focus {
+  outline: none;
+  border: 1px solid #1EDD88;
+}
+
+.search-button {
+  background-color: #1EDD88;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 0 30px 30px 0;
+  transition: background-color 0.3s;
+}
+
+.search-button:hover {
+  background-color: #0D6EFD;
+}
+
+.reservations-link {
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.navbar {
+  border-bottom: 2px solid #e4e4e4;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.avatar {
+  color: black;
+}
+
+.avatar :hover {
+  color: rgb(158, 158, 158);
+}
+
+body {
+  background-color: white;
+}
+
+.click-me {
+  color: rgb(0, 0, 0);
+  pointer-events: none;
 }

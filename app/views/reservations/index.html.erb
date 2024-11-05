@@ -1,16 +1,27 @@
-<h1>Reservations</h1>
+<div class="mt-4">
+  <h1>Reservations <%= link_to "Back to Home page", pets_path, class: "btn btn-primary float-end" %></h1>
+</div>
 
-<div class="container mt-4">
+<div class="container mt-4 mb-4">
   <div class="row">
     <% @reservations.each do |reservation| %>
       <div class="col-md-6">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title     ">Pet: <%= reservation.pet.name %></h5>
-            <p class="card-text">Owner: <%= reservation.pet.user.email %></p>
-            <p class="card-text">Start Date: <%= reservation.start_date %></p>
-            <p class="card-text">End Date: <%= reservation.end_date %></p>
+            <img src="<%= reservation.pet.image_url %>" class="card-img-top" alt="<%= reservation.pet.name %>">
+            <div class="card-text mt-2">
+              <h5 class="card-title">Reservation for: <%= reservation.pet.name %></h5>
+              <p class="card-text">Owner: <%= reservation.pet.user.email %></p>
+              <p class="card-text">Start Date: <%= reservation.start_date %></p>
+              <p class="card-text">End Date: <%= reservation.end_date %></p>
+            </div>
+            <%= link_to "Back to #{reservation.pet.name}'s Details", pet_path(reservation.pet), class: "btn btn-success mt-2" %>
+            <%= link_to "Cancel #{reservation.pet.name}'s reservation", reservation_path(reservation), method: :delete, data: { confirm: 'Are you sure you want to delete this reservation?' }, class: "btn btn-danger mt-2" %>
+
           </div>
         </div>
       </div>
     <% end %>
+  </div>
+</div>
+
