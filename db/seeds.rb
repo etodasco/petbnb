@@ -2,16 +2,16 @@
 
 # Array of static dog images
 dog_images = [
-  "https://placedog.net/300/200?random=1",
-  "https://placedog.net/300/200?random=2",
-  "https://placedog.net/300/200?random=3",
-  "https://placedog.net/300/200?random=4",
-  "https://placedog.net/300/200?random=5",
-  "https://placedog.net/300/200?random=6",
-  "https://placedog.net/300/200?random=7",
-  "https://placedog.net/300/200?random=8",
-  "https://placedog.net/300/200?random=9",
-  "https://placedog.net/300/200?random=10"
+  "https://placedog.net/300/200",
+  "https://placedog.net/300/201",
+  "https://placedog.net/300/202",
+  "https://placedog.net/300/203",
+  "https://placedog.net/300/204",
+  "https://placedog.net/300/205",
+  "https://placedog.net/300/206",
+  "https://placedog.net/300/207",
+  "https://placedog.net/300/208",
+  "https://placedog.net/300/209"
 ]
 
 # Sample user to associate with pets
