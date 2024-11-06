@@ -4,6 +4,21 @@ class PetsController < ApplicationController
 
   def index
     @pets = Pet.all
+    if params[:address].present?
+      @pets = @pets.where("address ILIKE ?", "%#{params[:address]}%")
+    end
+
+    # Only apply date filtering if both start_date and end_date are provided
+    if params[:start_date].present? && params[:end_date].present?
+      @pets = @pets.where("start_date >= ? AND end_date <= ?", params[:start_date], params[:end_date])
+    # If only start_date is provided, filter for pets available from that date onwards
+    elsif params[:start_date].present?
+      @pets = @pets.where("start_date >= ?", params[:start_date])
+    # If only end_date is provided, filter for pets available up until that date
+    elsif params[:end_date].present?
+      @pets = @pets.where("end_date <= ?", params[:end_date])
+    end
+    # Geocode pets for map markers
     @markers = @pets.geocoded.map do |pet|
       {
         lat: pet.latitude,
@@ -34,7 +49,7 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
     @pet.destroy
     redirect_to pets_path, notice: "Pet was successfully deleted."
-  end  
+  end
 
   private
 
@@ -46,4 +61,3 @@ class PetsController < ApplicationController
     params.require(:pet).permit(:name, :breed, :address, :image_url, :description)
   end
 end
-
