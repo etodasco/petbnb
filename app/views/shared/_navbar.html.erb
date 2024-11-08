@@ -5,15 +5,23 @@
       <%# <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
     <% end %>
 
-<div class="container">
-  <div class="search-bar d-flex gap-2 mx-auto">
-    <input type="text" class="form-control form-control-sm destination-input" placeholder="Search by area | Search by breed.." />
-    <input type="date" class="form-control form-control-sm date-input" />
-    <input type="date" class="form-control form-control-sm date-input" />
-    <button class="btn btn-primary btn-sm search-button">Search</button>
-  </div>
-</div>
+    <%= form_with(url: pets_path, method: :get, local: true) do |form| %>
+      <div class="container">
+        <div class="search-bar d-flex gap-2 mx-auto">
 
+          <%= form.text_field :address, class: "form-control form-control-sm destination-input", placeholder: "Search by area.." %>
+
+
+          <%= form.date_field :start_date, class: "form-control form-control-sm date-input" %>
+
+
+          <%= form.date_field :end_date, class: "form-control form-control-sm date-input" %>
+
+
+          <%= form.submit "Search", class: "btn btn-primary btn-sm search-button" %>
+        </div>
+      </div>
+    <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
