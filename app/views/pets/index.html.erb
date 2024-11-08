@@ -17,6 +17,12 @@
   </div>
 </h1>
 
+
+<% if @pets.empty? %>
+
+  <p>No pets found</p>
+<% end %>
+
 <div class="container mt-4 p-4 bg-light rounded">
   <div class="row">
     <% @pets.each do |pet| %>

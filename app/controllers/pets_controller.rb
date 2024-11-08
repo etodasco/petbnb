@@ -18,6 +18,9 @@ class PetsController < ApplicationController
     elsif params[:end_date].present?
       @pets = @pets.where("end_date <= ?", params[:end_date])
     end
+    if @pets.empty?
+      @no_pets_message = "No available pets"
+    end
     # Geocode pets for map markers
     @markers = @pets.geocoded.map do |pet|
       {
