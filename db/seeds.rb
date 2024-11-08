@@ -1,6 +1,6 @@
 # db/seeds.rb
-Pet.destroy_all
-User.destroy_all
+User.destroy
+Pet.destroy
 # Array of static dog images
 dog_images = [
   "https://placedog.net/300/200",
