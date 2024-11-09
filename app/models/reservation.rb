@@ -14,4 +14,9 @@ class Reservation < ApplicationRecord
       errors.add(:end_date, "must be after the start date")
     end
   end
+def self.pet_available?(pet, start_date, end_date)
+    Reservation.where(pet_id: pet.id)
+               .where("start_date < ? AND end_date > ?", end_date, start_date)
+               .empty?
+  end
 end

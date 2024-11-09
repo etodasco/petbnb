@@ -8,7 +8,7 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <%= form_with model: @pet, local: true, html: { multipart: true } do |form| %>
+      <%= simple_form_for(@pet, html: { multipart: true }) do |f| %>
         <% if @pet.errors.any? %>
           <div id="error_explanation" class="alert alert-danger">
             <h2><%= pluralize(@pet.errors.count, "error") %> prohibited this pet from being saved:</h2>
@@ -20,25 +20,29 @@
           </div>
         <% end %>
 
-  <%= simple_form_for (@pet) do |f| %>
-  <%= f.input :name, label: "Name", input_html: { class: 'form-control' } %>
 
-  <%= f.input :breed, label: "Breed", input_html: { class: 'form-control' } %>
+        <%= f.input :name, label: "Name", input_html: { class: 'form-control' } %>
+        <%= f.input :breed, label: "Breed", input_html: { class: 'form-control' } %>
 
-  <%= f.input :address,
-              label: "Address",
-              input_html: { data: { address_autocomplete_target: "address" }, class: "d-none" },
-              wrapper_html: { data: { controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"] } } %>
+        <%= f.input :address,
+                    label: "Address",
+                    input_html: { data: { address_autocomplete_target: "address" }, class: "d-none" },
+                    wrapper_html: { data: { controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"] } } %>
 
-  <%= f.input :image_url, label: "Image URL", placeholder: 'Enter image URL', input_html: { class: 'form-control' } %>
+        <%= f.input :image_url, label: "Image URL", placeholder: 'Enter image URL', input_html: { class: 'form-control' } %>
+        <%= f.input :image_file, as: :file, label: "Upload Image File", input_html: { class: 'form-control' } %>
+        <%= f.input :description, as: :text, label: "Description", input_html: { class: 'form-control' } %>
 
-  <%= f.input :image_file, as: :file, label: "Upload Image File", input_html: { class: 'form-control' } %>
 
-  <%= f.input :description, as: :text, label: "Description", input_html: { class: 'form-control' } %>
+        <h3>Availability Dates</h3>
+        <%= f.fields_for :pet_availabilities do |availability_form| %>
+          <div class="form-group">
+            <%= availability_form.input :available_from, as: :date, label: "Available From", input_html: { class: 'form-control' } %>
+            <%= availability_form.input :available_to, as: :date, label: "Available To", input_html: { class: 'form-control' } %>
+          </div>
+        <% end %>
 
-  <%= f.button :submit, class: "btn btn-primary" %>
-<% end %>
-
+        <%= f.button :submit, class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
