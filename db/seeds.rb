@@ -1,12 +1,19 @@
-Pet.destroy_all
-User.destroy_all
 
-# Array of static pet images
-pet_images = [
-  "https://placedog.net/300/200", "https://placedog.net/300/201", "https://placedog.net/300/202",
-  "https://placedog.net/300/203", "https://placedog.net/300/204", "https://placedog.net/300/205",
-  "https://placedog.net/300/206", "https://placedog.net/300/207", "https://placedog.net/300/208",
-  "https://placedog.net/300/209",
+# db/seeds.rb
+User.destroy_all
+Pet.destroy_all
+# Array of static dog images
+dog_images = [
+  "https://placedog.net/300/200",
+  "https://placedog.net/300/201",
+  "https://placedog.net/300/202",
+  "https://placedog.net/300/203",
+  "https://placedog.net/300/204",
+  "https://placedog.net/300/205",
+  "https://placedog.net/300/206",
+  "https://placedog.net/300/207",
+  "https://placedog.net/300/208",
+  "https://placedog.net/300/209
 ]
 
 # Sample user to associate with pets (or create a default user if none exist)
@@ -64,7 +71,6 @@ if pet_data.count != availability_dates.count
 end
 
 
-
 # require 'faker'
 
 # # Create users
@@ -116,4 +122,5 @@ end
 #   )
 # end
 
-# puts "Seeded #{User.count} users, #{Pet.count} pets, and #{Reservation.count} reservations."
+# puts "Seeded #{User.count} users, #{Pet.count} pets, and #{Reservation.count} reservations
+
