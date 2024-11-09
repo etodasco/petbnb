@@ -1,7 +1,7 @@
-
 # db/seeds.rb
 User.destroy_all
 Pet.destroy_all
+
 # Array of static dog images
 pet_images = [
   "https://placedog.net/300/200",
@@ -13,7 +13,7 @@ pet_images = [
   "https://placedog.net/300/206",
   "https://placedog.net/300/207",
   "https://placedog.net/300/208",
-  "https://placedog.net/300/209
+  "https://placedog.net/300/209"  # <-- Fixed missing closing quote here
 ]
 
 # Sample user to associate with pets (or create a default user if none exist)
@@ -21,7 +21,6 @@ user = User.first || User.create!(email: "default@example.com", password: "passw
 
 # Define data for 10 dogs
 pet_data = [
-  # Dogs
   { name: "Scout", breed: "Golden Retriever", address: "123 Rue Sainte-Catherine, Montreal, QC", description: "A friendly and energetic dog.", latitude: 45.5051, longitude: -73.5586, species: "dog", start_date: "2024-11-01", end_date: "2024-11-15" },
   { name: "Max", breed: "Bulldog", address: "456 Boulevard Saint-Laurent, Montreal, QC", description: "Loves to nap and eat treats.", latitude: 45.5184, longitude: -73.5733, species: "dog", start_date: "2024-11-05", end_date: "2024-11-20" },
   { name: "Bella", breed: "Beagle", address: "789 Avenue du Mont-Royal E, Montreal, QC", description: "Curious and loves to explore.", latitude: 45.5265, longitude: -73.5855, species: "dog", start_date: "2024-11-10", end_date: "2024-11-25" },
@@ -34,37 +33,7 @@ pet_data = [
   { name: "Sadie", breed: "Shih Tzu", address: "707 Boulevard René-Lévesque O, Montreal, QC", description: "Sweet and loves to be pampered.", latitude: 45.4981, longitude: -73.5730, species: "dog", start_date: "2024-12-05", end_date: "2024-12-25" },
 ]
 
-
-availability_dates = [
-  { available_from: '2024-11-01', available_until: '2024-11-15' },
-  { available_from: '2024-11-05', available_until: '2024-11-20' },
-  { available_from: '2024-11-10', available_until: '2024-11-25' },
-  { available_from: '2024-11-12', available_until: '2024-11-30' },
-  { available_from: '2024-11-15', available_until: '2024-12-01' },
-  { available_from: '2024-11-20', available_until: '2024-12-05' },
-  { available_from: '2024-11-25', available_until: '2024-12-10' },
-  { available_from: '2024-11-28', available_until: '2024-12-15' },
-  { available_from: '2024-12-01', available_until: '2024-12-20' },
-  { available_from: '2024-12-05', available_until: '2024-12-25' },
-]
-
-=======
-]
-
-
-availability_dates = [
-  { available_from: '2024-11-01', available_until: '2024-11-15' },
-  { available_from: '2024-11-05', available_until: '2024-11-20' },
-  { available_from: '2024-11-10', available_until: '2024-11-25' },
-  { available_from: '2024-11-12', available_until: '2024-11-30' },
-  { available_from: '2024-11-15', available_until: '2024-12-01' },
-  { available_from: '2024-11-20', available_until: '2024-12-05' },
-  { available_from: '2024-11-25', available_until: '2024-12-10' },
-  { available_from: '2024-11-28', available_until: '2024-12-15' },
-  { available_from: '2024-12-01', available_until: '2024-12-20' },
-  { available_from: '2024-12-05', available_until: '2024-12-25' },
-]
-# Create pet
+# Create pets
 pet_data.each_with_index do |data, index|
   pet = Pet.create!(
     name: data[:name],
@@ -75,67 +44,15 @@ pet_data.each_with_index do |data, index|
     user_id: user.id,  # Associate with the sample user
     latitude: data[:latitude],
     longitude: data[:longitude],
-    start_date: availability_dates[index][:available_from],
-    end_date: availability_dates[index][:available_until]
+    start_date: data[:start_date],  # Directly using start_date from pet_data
+    end_date: data[:end_date]       # Directly using end_date from pet_data
   )
   puts "Created pet: #{pet.name}, available from #{pet.start_date} to #{pet.end_date}"
 end
+
 puts "Number of pets: #{pet_data.count}"
-puts "Number of availability dates: #{availability_dates.count}"
 
-if pet_data.count != availability_dates.count
-  puts "Warning: Pet data and availability dates do not match in number!"
-
-# require 'faker'
-
-# # Create users
-# users = []
-# 5.times do
-#   users << User.create(
-#     email: Faker::Internet.unique.email,
-#     password: "password",  # Replace with a secure password in production
-#     first_name: Faker::Name.first_name,
-#     last_name: Faker::Name.last_name
-#   )
+# If you want to keep availability_dates, uncomment this check
+# if pet_data.count != availability_dates.count
+#   puts "Warning: Pet data and availability dates do not match in number!"
 # end
-
-# # Array of unique dog images
-# dog_images = [
-#   "https://placedog.net/300/200?random=1",
-#   "https://placedog.net/300/200?random=2",
-#   "https://placedog.net/300/200?random=3",
-#   "https://placedog.net/300/200?random=4",
-#   "https://placedog.net/300/200?random=5",
-#   "https://placedog.net/300/200?random=6",
-#   "https://placedog.net/300/200?random=7",
-#   "https://placedog.net/300/200?random=8",
-#   "https://placedog.net/300/200?random=9",
-#   "https://placedog.net/300/200?random=10"
-# ]
-
-# # Create 10 pets associated with the users
-# 10.times do
-#   user = users.sample  # Randomly select a user for each pet
-#   Pet.create(
-#     name: Faker::Creature::Dog.name,
-#     breed: Faker::Creature::Dog.breed,
-#     address: Faker::Address.full_address,
-#     description: Faker::Lorem.sentence,
-#     image_url: dog_images.sample,  # Select a random dog image
-#     user_id: user.id
-#   )
-# end
-
-# # Create reservations for the pets
-# Pet.all.each do |pet|
-#   Reservation.create(
-#     user_id: users.sample.id,  # Randomly assign a user to the reservation
-#     pets_id: pet.id,
-#     start_date: Faker::Date.forward(days: 23),
-#     end_date: Faker::Date.forward(days: 30),
-#     status: ["pending", "confirmed", "cancelled"].sample
-#   )
-# end
-
-# puts "Seeded #{User.count} users, #{Pet.count} pets, and #{Reservation.count} reservations
-
