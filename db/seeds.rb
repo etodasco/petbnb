@@ -2,7 +2,7 @@
 User.destroy_all
 Pet.destroy_all
 # Array of static dog images
-dog_images = [
+pet_images = [
   "https://placedog.net/300/200",
   "https://placedog.net/300/201",
   "https://placedog.net/300/202",
