@@ -39,6 +39,13 @@
             <p class="card-text">Breed: <%= pet.breed %></p>
             <p class="card-text">Description: <%= pet.description %></p>
             <p class="card-text"><small class="text-muted">Location: <%= pet.address %></small></p>
+
+            <!-- New code: Availability -->
+            <p class="card-text">
+              <small class="text-muted">
+                Available from: <%= pet.start_date.strftime('%B %d, %Y') %> to <%= pet.end_date.strftime('%B %d, %Y') %>
+              </small>
+            </p>
           </div>
         </div>
       </div>

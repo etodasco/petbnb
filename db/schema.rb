@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_06_020229) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_09_161303) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,6 +28,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_06_020229) do
     t.string "city"
     t.date "start_date"
     t.date "end_date"
+    t.date "available_from"
+    t.date "available_to"
     t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
