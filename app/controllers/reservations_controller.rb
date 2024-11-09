@@ -26,14 +26,15 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
-    @reservation = Reservation.find(params[:id])
+    @pet = Pet.find(params[:pet_id])
+    @reservation = @pet.reservations.find(params[:id])
+
     if @reservation.destroy
-      redirect_to reservations_path, notice: "Reservation deleted successfully."
+      redirect_to pet_reservations_path(@pet), notice: "Reservation deleted successfully."
     else
-      redirect_to reservations_path, alert: "Failed to delete reservation."
+      redirect_to pet_reservations_path(@pet), alert: "Failed to delete reservation."
     end
   end
-
   private
 
   def reservation_params
