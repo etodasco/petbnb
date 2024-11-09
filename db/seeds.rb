@@ -1,7 +1,7 @@
 Pet.destroy_all
 User.destroy_all
 
-# Array of static pet images (dogs and cats)
+# Array of static pet images
 pet_images = [
   "https://placedog.net/300/200", "https://placedog.net/300/201", "https://placedog.net/300/202",
   "https://placedog.net/300/203", "https://placedog.net/300/204", "https://placedog.net/300/205",
@@ -12,7 +12,7 @@ pet_images = [
 # Sample user to associate with pets (or create a default user if none exist)
 user = User.first || User.create!(email: "default@example.com", password: "password")
 
-# Define data for 10 dogs and 10 cats
+# Define data for 10 dogs
 pet_data = [
   # Dogs
   { name: "Scout", breed: "Golden Retriever", address: "123 Rue Sainte-Catherine, Montreal, QC", description: "A friendly and energetic dog.", latitude: 45.5051, longitude: -73.5586, species: "dog", start_date: "2024-11-01", end_date: "2024-11-15" },
@@ -40,7 +40,7 @@ availability_dates = [
   { available_from: '2024-12-01', available_until: '2024-12-20' },
   { available_from: '2024-12-05', available_until: '2024-12-25' },
 ]
-# Create pets (both dogs and cats)
+# Create pets
 pet_data.each_with_index do |data, index|
   pet = Pet.create!(
     name: data[:name],
