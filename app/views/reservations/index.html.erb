@@ -4,24 +4,38 @@
 
 <div class="container mt-4 mb-4">
   <div class="row">
-    <% @reservations.each do |reservation| %>
-     <% next if reservation.status == 'canceled' %>
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-body">
-            <img src="<%= reservation.pet.image_url %>" class="card-img-top" alt="<%= reservation.pet.name %>">
-            <div class="card-text mt-2">
+    <% if @reservations.empty? %>
+      <p>No reservations found</p>
+    <% else %>
+      <% @reservations.each do |reservation| %>
+        <% next if reservation.status == 'canceled' %>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 rounded-3">
+            <div class="position-relative">
+              <img src="<%= reservation.pet.image_url %>" class="card-img-top" alt="<%= reservation.pet.name %>">
+              <!-- statut de la reservation -->
+              <span class="status-badge btn btn-light rounded-pill position-absolute bottom-0 end-0 me-2 mb-2">
+                <%= reservation.status.capitalize %>
+              </span>
+            </div>
+            <div class="card-body">
               <h5 class="card-title">Reservation for: <%= reservation.pet.name %></h5>
               <p class="card-text">Owner: <%= reservation.pet.user.email %></p>
               <p class="card-text">Start Date: <%= reservation.start_date %></p>
               <p class="card-text">End Date: <%= reservation.end_date %></p>
-            </div>
-            <%= link_to "Back to #{reservation.pet.name}'s Details", pet_path(reservation.pet), class: "btn btn-success mt-2" %>
-            <%= link_to "Cancel #{reservation.pet.name}'s reservation", pet_reservation_path(reservation.pet, reservation), method: :delete, data: { confirm: 'Are you sure you want to delete this reservation?' }, class: "btn btn-danger mt-2" %>
 
+              <%= link_to "Back to #{reservation.pet.name}'s Details", pet_path(reservation.pet), class: "btn btn-success mt-2" %>
+              <%= link_to "Cancel #{reservation.pet.name}'s reservation", pet_reservation_path(reservation.pet, reservation), method: :delete, data: { confirm: 'Are you sure you want to delete this reservation?' }, class: "btn btn-danger mt-2" %>
+
+              <!--  boutons Accept et Decline seulemnt si l'utilisateur est propriétaire -->
+              <% if reservation.status == 'pending' && current_user == reservation.pet.user %>
+                <%= link_to "Accept", pet_reservation_path(reservation.pet, reservation, reservation: { status: 'accepted' }), method: :patch, class: "btn btn-success mt-2" %>
+                <%= link_to "Decline", pet_reservation_path(reservation.pet, reservation, reservation: { status: 'rejected' }), method: :patch, class: "btn btn-danger mt-2" %>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>
