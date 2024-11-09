@@ -46,7 +46,7 @@ availability_dates = [
   { available_from: '2024-12-01', available_until: '2024-12-20' },
   { available_from: '2024-12-05', available_until: '2024-12-25' },
 ]
-# Create pets
+
 pet_data.each_with_index do |data, index|
   pet = Pet.create!(
     name: data[:name],
