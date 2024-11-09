@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "messages/index"
+  get "messages/new"
+  get "messages/create"
   get "reservations/new"
   get "reservations/create"
   devise_for :users
@@ -21,4 +24,8 @@ Rails.application.routes.draw do
     resources :reservations, only: [ :index, :new, :create, :destroy ]
   end
   resources :reservations, only: [ :index, :show ]
+
+  resources :conversations do
+    resources :messages, only: [:index, :new, :create]
+  end
 end

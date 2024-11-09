@@ -1,0 +1,12 @@
+<!-- app/views/messages/index.html.erb -->
+<h1>Conversation with <%= @conversation.user1 == current_user ? @conversation.user2.full_name : @conversation.user1.full_name %></h1>
+
+<% @messages.each do |message| %>
+  <div class="message">
+    <strong><%= message.sender.full_name %>:</strong>
+    <p><%= message.content %></p>
+    <span class="timestamp"><%= message.created_at.strftime("%b %d, %Y %H:%M") %></span>
+  </div>
+<% end %>
+
+<%= link_to 'Back to Conversations', conversations_path %>
