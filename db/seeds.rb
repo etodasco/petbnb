@@ -47,19 +47,6 @@ availability_dates = [
   { available_from: '2024-12-05', available_until: '2024-12-25' },
 ]
 
-availability_dates = [
-  { available_from: '2024-11-01', available_until: '2024-11-15' },
-  { available_from: '2024-11-05', available_until: '2024-11-20' },
-  { available_from: '2024-11-10', available_until: '2024-11-25' },
-  { available_from: '2024-11-12', available_until: '2024-11-30' },
-  { available_from: '2024-11-15', available_until: '2024-12-01' },
-  { available_from: '2024-11-20', available_until: '2024-12-05' },
-  { available_from: '2024-11-25', available_until: '2024-12-10' },
-  { available_from: '2024-11-28', available_until: '2024-12-15' },
-  { available_from: '2024-12-01', available_until: '2024-12-20' },
-  { available_from: '2024-12-05', available_until: '2024-12-25' },
-]
-
 # Create pet
 pet_data.each_with_index do |data, index|
   pet = Pet.create!(
