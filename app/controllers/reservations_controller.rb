@@ -1,4 +1,7 @@
 class ReservationsController < ApplicationController
+
+
+
   def index
     @reservations = Reservation.all
   end
@@ -30,6 +33,17 @@ class ReservationsController < ApplicationController
       redirect_to pet_reservations_path(@pet), alert: "Failed to delete reservation."
     end
   end
+
+  def update
+    if @reservation && @reservation.pet.user == current_user # Only owner can update
+        @reservation.update(status: params[:status])
+
+        redirect_to reservations_path, notice: "Reservation status updated successfully."
+      else
+        redirect_to reservations_path, alert: "You are not authorized to update this reservation."
+      end
+  end
+
   private
 
   def reservation_params
