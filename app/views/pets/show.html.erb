@@ -1,20 +1,26 @@
-<div class="text-end mt-4">
-<%= link_to "All Pets", pets_path, class: "btn btn-success" %>
-<%= link_to "Delete #{@pet.name}", pet_path(@pet), method: :delete, data: { confirm: 'Are you sure you want to delete this pet?' }, class: "btn btn-danger" %>
+<div class="d-flex justify-content-between align-items-center mt-4">
+  <%= link_to "All Pets", pets_path, class: "btn btn-success" %>
+  <%= link_to "Delete #{@pet.name}", pet_path(@pet), method: :delete, data: { confirm: 'Are you sure you want to delete this pet?' }, class: "btn btn-danger" %>
 </div>
 
-<div class="container mt-5 d-flex justify-content-center">
-  <div class="text-start">
-    <img src="<%= @pet.image_url || 'https://place.dog/300/200' %>" class="img-fluid mb-3 rounded mx-auto d-block" alt="<%= @pet.name %>">
-    <ul class="list-unstyled">
-      <h1><%= @pet.name %></h1>
-      <li>Description:<%= @pet.description %></li>
-      <li>Breed:<%= @pet.breed %></li>
-      <li>Address:<%= @pet.address %></li>
-      <div class="text-center">
-      <%= link_to "Book #{@pet.name}", new_pet_reservation_path(@pet), class: "btn btn-primary mt-2" %>
-      <%= link_to "Messege Owner", "#", class: "btn btn-success mt-2" %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-sm">
+        <img src="<%= @pet.image_url || 'https://place.dog/300/200' %>" class="card-img-top img-fluid rounded" alt="<%= @pet.name %>">
+        <div class="card-body">
+          <h1 class="card-title text-center"><%= @pet.name %></h1>
+          <ul class="list-unstyled">
+            <li><strong>Description:</strong> <%= @pet.description %></li>
+            <li><strong>Breed:</strong> <%= @pet.breed %></li>
+            <li><strong>Address:</strong> <%= @pet.address %></li>
+          </ul>
+          <div class="d-flex justify-content-center mt-4">
+            <%= link_to "Book #{@pet.name}", new_pet_reservation_path(@pet), class: "btn btn-primary me-2" %>
+            <%= link_to "Message Owner", "#", class: "btn btn-success" %>
+          </div>
+        </div>
       </div>
-    </ul>
+    </div>
   </div>
 </div>
