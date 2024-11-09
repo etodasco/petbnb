@@ -3,7 +3,7 @@
 User.destroy_all
 Pet.destroy_all
 # Array of static dog images
-dog_images = [
+pet_images = [
   "https://placedog.net/300/200",
   "https://placedog.net/300/201",
   "https://placedog.net/300/202",
@@ -47,7 +47,24 @@ availability_dates = [
   { available_from: '2024-12-01', available_until: '2024-12-20' },
   { available_from: '2024-12-05', available_until: '2024-12-25' },
 ]
-# Create pets
+
+=======
+]
+
+
+availability_dates = [
+  { available_from: '2024-11-01', available_until: '2024-11-15' },
+  { available_from: '2024-11-05', available_until: '2024-11-20' },
+  { available_from: '2024-11-10', available_until: '2024-11-25' },
+  { available_from: '2024-11-12', available_until: '2024-11-30' },
+  { available_from: '2024-11-15', available_until: '2024-12-01' },
+  { available_from: '2024-11-20', available_until: '2024-12-05' },
+  { available_from: '2024-11-25', available_until: '2024-12-10' },
+  { available_from: '2024-11-28', available_until: '2024-12-15' },
+  { available_from: '2024-12-01', available_until: '2024-12-20' },
+  { available_from: '2024-12-05', available_until: '2024-12-25' },
+]
+# Create pet
 pet_data.each_with_index do |data, index|
   pet = Pet.create!(
     name: data[:name],
@@ -68,8 +85,6 @@ puts "Number of availability dates: #{availability_dates.count}"
 
 if pet_data.count != availability_dates.count
   puts "Warning: Pet data and availability dates do not match in number!"
-end
-
 
 # require 'faker'
 

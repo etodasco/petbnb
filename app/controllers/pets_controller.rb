@@ -35,6 +35,12 @@ class PetsController < ApplicationController
   def show
   end
 
+  def destroy
+  @pet = Pet.find(params[:id])
+ @pet.destroy
+ redirect_to pets_path, notice: "Pet was successfully deleted."
+  end
+
   def new
     @pet = Pet.new
   end
@@ -42,16 +48,17 @@ class PetsController < ApplicationController
   def create
     @pet = Pet.new(pet_params)
     @pet.user = current_user
+
     if @pet.save
+      # Attach the uploaded image file if it exists
+      if params[:pet][:image].present?
+        @pet.image.attach(params[:pet][:image])
+      end
+
       redirect_to @pet, notice: "Pet was successfully created."
     else
       render :new
     end
-  end
-  def destroy
-    @pet = Pet.find(params[:id])
-    @pet.destroy
-    redirect_to pets_path, notice: "Pet was successfully deleted."
   end
 
   private
@@ -62,8 +69,8 @@ class PetsController < ApplicationController
 
   def pet_params
     params.require(:pet).permit(
-      :name, :breed, :address, :image_url, :description,
-      pet_availabilities_attributes: [:available_from, :available_to]
+      :name, :breed, :address, :description,
+      :start_date, :end_date, :image
     )
   end
 end

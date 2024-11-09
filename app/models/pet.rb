@@ -1,11 +1,11 @@
 class Pet < ApplicationRecord
     belongs_to :user
     has_many :reservations, dependent: :destroy
+    has_one_attached :image
 
     validates :name, presence: true
     validates :breed, presence: true
     validates :address, presence: true
-    validates :image_url, presence: true
     validates :description, length: { maximum: 500 }
     validates :start_date, :end_date, presence: true
     validate :end_date_after_start_date
